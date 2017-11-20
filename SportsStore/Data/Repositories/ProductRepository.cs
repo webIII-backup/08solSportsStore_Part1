@@ -26,6 +26,11 @@ namespace SportsStore.Data.Repositories
             return _products.Include(p => p.Category).SingleOrDefault(p => p.ProductId == productId);
         }
 
+        public IEnumerable<Product> GetByCategory(int categoryId)
+        {
+            return _products.Where(p => p.Category.CategoryId == categoryId).ToList();
+        }
+
         public void Add(Product product)
         {
             _products.Add(product);

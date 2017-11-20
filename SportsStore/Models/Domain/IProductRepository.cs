@@ -6,6 +6,7 @@ namespace SportsStore.Models.Domain
     {
         IEnumerable<Product> GetAll();
         Product GetById(int productId);
+        IEnumerable<Product> GetByCategory(int categoryId);
         void Add(Product product);
         void Delete(Product product);
         void SaveChanges();
