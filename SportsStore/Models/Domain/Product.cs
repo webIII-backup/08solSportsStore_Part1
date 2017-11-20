@@ -10,6 +10,7 @@ namespace SportsStore.Models.Domain
         public string Description { get; set; }
         public int Price { get; set; }
         public bool InStock { get; set; }
+        public Availability Availability { get; set; }
         public Category Category { get; set; }
         #endregion
 
@@ -17,6 +18,7 @@ namespace SportsStore.Models.Domain
         public Product()
         {
             InStock = true;
+            Availability = Availability.ShopAndOnline;
         }
 
         public Product(string name, int price, Category category, string description = null) : this()

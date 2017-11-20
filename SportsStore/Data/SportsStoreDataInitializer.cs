@@ -30,6 +30,7 @@ namespace SportsStore.Data
                 watersports.AddProduct("Surf board", 275, "A boat for one person");
                 watersports.AddProduct("Kayak", 170, "High quality");
                 watersports.AddProduct("Lifejacket", 49, "Protective and fashionable");
+                watersports.FindProduct("Lifejacket").Availability = Availability.ShopOnly;
                 chess.AddProduct("Thinking cap", 16, "Improve your brain efficiency by 75%");
                 chess.AddProduct("Unsteady chair", 30, "Secretly give your opponent a disadvantage");
                 chess.AddProduct("Human chess board", 75, "A fun game for the whole extended family!");

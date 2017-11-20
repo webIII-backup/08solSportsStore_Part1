@@ -86,6 +86,7 @@ namespace SportsStore.Controllers
             product.Description = editViewModel.Description;
             product.Price = editViewModel.Price;
             product.InStock = editViewModel.InStock;
+            product.Availability = editViewModel.Availability;
             product.Category = _categoryRepository.GetById(editViewModel.CategoryId);
         }
     }
