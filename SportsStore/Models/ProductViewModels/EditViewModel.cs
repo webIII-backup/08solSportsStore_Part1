@@ -21,7 +21,7 @@ namespace SportsStore.Models.ProductViewModels
             Description = p.Description;
             Price = p.Price;
             InStock = p.InStock;
-            CategoryId = p.Category.CategoryId;
+            CategoryId = p.Category?.CategoryId ?? 0;
         }
     }
 }

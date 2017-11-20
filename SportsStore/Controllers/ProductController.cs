@@ -27,6 +27,7 @@ namespace SportsStore.Controllers
         public IActionResult Edit(int id)
         {
             Product product = _productRepository.GetById(id);
+            ViewData["IsEdit"] = true;
             ViewData["Categories"] = GetCategoriesSelectList();
             return View(new EditViewModel(product));
         }
@@ -40,9 +41,27 @@ namespace SportsStore.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Create()
+        {
+            var product = new Product();
+            ViewData["IsEdit"] = false;
+            ViewData["Categories"] = GetCategoriesSelectList();
+            return View(nameof(Edit), new EditViewModel(product));
+        }
+
+        [HttpPost]
+        public IActionResult Create(EditViewModel editViewModel)
+        {
+            var product = new Product();
+            MapToProduct(editViewModel, product);
+            _productRepository.Add(product);
+            _productRepository.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
         private SelectList GetCategoriesSelectList(int selected = 0)
         {
-            return new SelectList(_categoryRepository.GetAll().OrderBy(g => g.Name),
+            return new SelectList(_categoryRepository.GetAll().OrderBy(g => g.Name).ToList(),
                 nameof(Category.CategoryId), nameof(Category.Name), selected);
         }
 
